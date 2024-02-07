@@ -45,8 +45,11 @@ func NewWithExclusions(component string, exclusions []string) fiber.Handler {
 
 		if log {
 			Stop = time.Now()
+			ip := c.IP()
+			ip = c.Get("X-Forwarded-For", ip)
+			ip = c.Get("X-Real-Ip", ip)
 			slog.Info("request", "component", component, "method", c.Method(), "response_time", Stop.Sub(Start).Round(time.Millisecond),
-				"source_ip", c.IP(), "status", c.Response().StatusCode(), "path", c.Path())
+				"source_ip", ip, "status", c.Response().StatusCode(), "path", c.Path())
 		}
 
 		// End chain
