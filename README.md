@@ -6,7 +6,7 @@ field of the log entry.
 In order to use it get the latest version by running:
 
 ```shell
-go get github.com/iktech/github.com/iktech/fiber-slog-middleware
+go get github.com/iktech/fiber-slog-middleware
 ```
 
 In order to initialise it use the following code snippet:
